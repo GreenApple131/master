@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
+import '../App.css'
 
 /////////////////////////  Reset Marker Icon
 import L from 'leaflet';
@@ -17,27 +18,27 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function Homepage() {
     const state = {
-        center: [48.9866, 24.7100],
+        center: [48.9866, 24.7080],
         my_home: [48.990707, 24.706905],
         zoom: 15
       };
     
 
     return (
-        <MapContainer style={{ height: "100vh", width: "100%" }} center={state.center} zoom={state.zoom} scrollWheelZoom={true} >
-        <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            style={{width: "100%", height: "100%"}}
-        />
-        <Marker
-            position={state.my_home}
-            
-        >
-            <Popup>
-            A pretty CSS3 popup. <br /> Center.
-            </Popup>
-        </Marker>
+        <MapContainer className="main" style={{ height: "100vh", width: "100%" }} center={state.center} zoom={state.zoom} scrollWheelZoom={true} >
+            <TileLayer
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                style={{width: "100%", height: "100%"}}
+            />
+            <Marker
+                position={state.my_home}
+                
+            >
+                <Popup>
+                A pretty CSS3 popup. <br /> Center.
+                </Popup>
+            </Marker>
         </MapContainer>
     );
 }

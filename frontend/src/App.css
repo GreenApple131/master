@@ -37,3 +37,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 2fr 1fr;
+}
+.main {
+  height: 100vh;
+  width: 100%;
+}
+
+@media(max-width: 700px){
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .main {
+    height: 70vh !important;
+  }
+  .side {
+    height: 300px !important;
+  }
+}
