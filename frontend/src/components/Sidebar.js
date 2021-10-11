@@ -1,28 +1,43 @@
 import React, { Component } from "react";
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 
 export default function Sidebar() {
+  function getCommonStatusCode() {
+    return {
+      status: 'GOOD'
+    }
+  }
+
   function optionsLine() {
     return {
-      title: {
-        display: true,
-        text: 'Chart.js Toggle with React',
-        fontSize: 20
+      plugins: {
+        title: {
+          display: true,
+          text: (ctx) => 'Last week data'
+        }
       },
       scales: {
-        xAxes: [{
-          display: false
-        }],
-        yAxes: [{
-          type: "linear",
-          display: true,
-          position: "left"
-        }]
+        x: {
+          title: {
+            display: true,
+            text: 'Day'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Value'
+          }
+        }
+      },
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false
       },
       responsive: true,
-      fill: true,
     };
   }
 
@@ -38,87 +53,199 @@ export default function Sidebar() {
     ],
     "datasets": [
       {
-        "label": "Temperature",
-        "data": [
-          340,
-          425,
-          383,
-          403,
-          389,
-          504,
-          467
+        label: "Temperature",
+        data: [
+          12,
+          11,
+          8,
+          10,
+          15,
+          14,
+          13
         ],
-        // blue
-        borderWidth: 0,
-        borderColor: "rgba(101,147,185,1)",
-        backgroundColor: ["rgba(101,147,185,0.8)"],
-        pointBackgroundColor: "rgba(255,255,255,0.8)",
-        pointBorderColor: "rgba(101,147,185,1)",
-        pointHoverBorderColor: "magenta",
-        pointHoverBorderWidth: 1
+        borderColor: '#E25435',
+        backgroundColor: '#E25435',
+        fill: false
       },
       {
         "label": "Turbidity",
         "data": [
-          439,
-          465,
-          493,
-          478,
-          559,
-          532,
-          514
+          1.5,
+          1.4,
+          1.6,
+          2,
+          1.8,
+          1.6,
+          1.6
         ],
-        // pinky
-        borderWidth: 0,
-        borderColor: "rgba(220,120,220,1)",
-        backgroundColor: "rgba(220,120,220,0.8)",
-        pointBackgroundColor: "rgba(255,255,255,0.8)",
-        pointBorderColor: "rgba(220,120,220,1)",
-        pointHoverBorderColor: "#333",
-        pointHoverBorderWidth: 1
+        borderColor: '#4F6FAE',
+        backgroundColor: '#4F6FAE',
       },
       {
         "label": "pH",
         "data": [
-          489,
-          545,
-          583,
-          503,
-          589,
-          592,
-          434
+          7,
+          6.9,
+          6.9,
+          7.1,
+          7,
+          7.1,
+          7
         ],
-        // red
-        borderWidth: 0,
-        borderColor: "rgba(247,70,74,1)",
-        backgroundColor: "rgba(247,70,74,0.7)",
-        pointBackgroundColor: "rgba(255,255,255,0.8)",
-        pointBorderColor: "rgba(247,70,74,1)",
-        pointHoverBorderColor: "rgba(0,0,0,0.7)",
-        pointHoverBorderWidth: 1,
-        pointHoverBackgroundColor: "rgba(247,70,74,1)"
+        borderColor: '#70CAD1',
+        backgroundColor: '#70CAD1',
+      }
+    ]
+  }
+
+  const detailedData = {
+    "labels": [
+      "Mo 00:00",
+      "Mo 06:00",
+      "Mo 12:00",
+      "Mo 18:00",
+      "Tu 00:00",
+      "Tu 06:00",
+      "Tu 12:00",
+      "Tu 18:00",
+      "We 00:00",
+      "We 06:00",
+      "We 12:00",
+      "We 18:00",
+      "Th 00:00",
+      "Th 06:00",
+      "Th 12:00",
+      "Th 18:00",
+      "Fr 00:00",
+      "Fr 06:00",
+      "Fr 12:00",
+      "Fr 18:00",
+      "Sa 00:00",
+      "Sa 06:00",
+      "Sa 12:00",
+      "Sa 18:00",
+      "Su 00:00",
+      "Su 06:00",
+      "Su 12:00",
+      "Su 18:00"
+    ],
+    "datasets": [
+      {
+        label: "Temperature",
+        data: [
+          9,
+          7,
+          11,
+          16,
+          11,
+          9,
+          7,
+          11,
+          16,
+          11,
+          9,
+          7,
+          11,
+          16,
+          11,
+          9,
+          7,
+          11,
+          20,
+          11,
+          9,
+          7,
+          11,
+          16,
+          11,
+          9,
+          7,
+          11,
+          16,
+          11,
+        ],
+        borderColor: '#E25435',
+        backgroundColor: '#E25435',
+        fill: false
       },
       {
-        "label": "Common",
+        "label": "Turbidity",
         "data": [
-          450,
-          500,
-          520,
-          500,
-          520,
-          550,
-          400
+          1.5,
+          1.4,
+          1.6,
+          2,
+          1.8,
+          1.6,
+          1.5,
+          1.4,
+          1.6,
+          2,
+          1.8,
+          1.6,
+          1.5,
+          1.4,
+          1.6,
+          2,
+          1.8,
+          1.6,
+          1.5,
+          1.4,
+          1.6,
+          2,
+          1.8,
+          1.6,
+          1.5,
+          1.4,
+          1.6,
+          2,
+          1.8,
+          1.6,
         ],
-        // lime
-        borderWidth: 0,
-        borderColor: "lime",
-        backgroundColor: "lime",
-        pointBackgroundColor: "lime"
+        borderColor: '#4F6FAE',
+        backgroundColor: '#4F6FAE',
+      },
+      {
+        "label": "pH",
+        "data": [
+          7,
+          6.9,
+          6.9,
+          7.1,
+          7,
+          7.1,
+          7,
+          6.9,
+          6.9,
+          7.1,
+          7,
+          7.1,
+          7,
+          6.9,
+          6.9,
+          7.1,
+          7,
+          7.1,
+          7,
+          6.9,
+          6.9,
+          7.1,
+          7,
+          7.1,
+          7,
+          6.9,
+          6.9,
+          7.1,
+          7,
+          7.1
+        ],
+        borderColor: '#70CAD1',
+        backgroundColor: '#70CAD1',
       }
     ]
   }
   return (
-    <div>
+    <div className="side overflow-auto">
       <Button variant="success" size="lg" disabled style={{marginTop: '5px'}}>
         Status
       </Button>
@@ -158,9 +285,9 @@ export default function Sidebar() {
         </tbody>
       </Table>
       <div>
-        <Line data={data} options={optionsLine()} />
-        <br />
         <Bar data={data} options={optionsLine()} style={{marginTop: "10px"}} />
+        <br />
+        <Line data={detailedData} options={optionsLine()} />
       </div>
     </div>
   );

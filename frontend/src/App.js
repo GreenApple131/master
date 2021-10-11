@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App grid">
       <Homepage className="main" />
-      <Sidebar className="side" />
+      <Sidebar  className="side" />
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useMapEvents, MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useState, useEffect } from "react";
+import { useMapEvents, MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../App.css";
 
@@ -16,6 +16,10 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 //////////////////////////////////////////////////////
 
+function getCommonStatusCode() {
+  var status = 'GOOD'
+  return {status}
+}
 
 function LocationMarker() {
   const [position, setPosition] = useState(null)
@@ -38,11 +42,21 @@ function LocationMarker() {
 
 
 export default function Homepage() {
+  const [statusColor, setStatus] = useState('');
   const state = {
     center: [48.9866, 24.708],
     my_home: [48.990807, 24.706805],
     zoom: 15,
   };
+
+  useEffect(() => {
+    if (getCommonStatusCode === 'GOOD') {
+      setStatus('green')
+    } else {
+      setStatus('red')
+    }
+    console.log('status: ', statusColor)
+  })
 
   return (
     <MapContainer
@@ -61,7 +75,12 @@ export default function Homepage() {
           A pretty CSS3 popup. <br /> Center.
         </Popup>
       </Marker>
-      <LocationMarker />
+      <Circle center={state.my_home} pathOptions={{color: statusColor}} radius={100}>
+        <Popup>
+          Water in this area is clear!
+        </Popup>
+      </Circle>
+      {/* <LocationMarker /> */}
     </MapContainer>
   );
 }

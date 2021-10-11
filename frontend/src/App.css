@@ -51,18 +51,21 @@
   height: 100vh;
   width: 100%;
 }
+.side {
+  max-height: 100vh;
+}
 .marker {
   margin-left: 11px !important;
 }
 
-@media(max-width: 700px){
+@media(max-width: 900px){
   .grid {
     grid-template-columns: 1fr;
   }
   .main {
-    height: 70vh !important;
+    height: 60vh !important;
   }
   .side {
-    height: 300px !important;
+    height: 500px !important;
   }
 }
