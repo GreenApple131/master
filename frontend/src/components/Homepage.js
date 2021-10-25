@@ -18,7 +18,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 function getCommonStatusCode() {
   var status = 'GOOD'
-  return {status}
+  return status
 }
 
 function LocationMarker() {
@@ -53,7 +53,7 @@ export default function Homepage() {
     if (getCommonStatusCode === 'GOOD') {
       setStatus('green')
     } else {
-      setStatus('red')
+      setStatus('green')
     }
     console.log('status: ', statusColor)
   })

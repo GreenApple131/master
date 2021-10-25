@@ -247,7 +247,7 @@ export default function Sidebar() {
   return (
     <div className="side overflow-auto">
       <Button variant="success" size="lg" disabled style={{marginTop: '5px'}}>
-        Status
+        Good quality
       </Button>
 
       <Table
@@ -283,8 +283,8 @@ export default function Sidebar() {
             <td>@twitter</td>
           </tr>
         </tbody>
-      </Table>
-      <div>
+      </Table> 
+      <div style={{marginTop: '50px'}}>
         <Bar data={data} options={optionsLine()} style={{marginTop: "10px"}} />
         <br />
         <Line data={detailedData} options={optionsLine()} />
