@@ -10,7 +10,7 @@ class Device(models.Model):
         return str(self.number)
     
     def get_absolute_url(self):
-        return reverse("device_detail", args=[self.pk])
+        return reverse("backend:device_detail", args=[self.pk])
     
 
 

@@ -1,6 +1,16 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+
 from . import views
 
+app_name = 'backend'
+
+router = routers.DefaultRouter()
+
+router.register(r'devices', views.DeviceView, 'device')
+router.register(r'data', views.DataView, 'data')
+
+
 urlpatterns = [
-    # path('api/customers/', views.customers_list.as_view() ),
+    path('', include(router.urls)),
 ]
