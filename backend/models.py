@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Device(models.Model):
-    number = models.CharField(max_length=100, unique=True, editable=False)
+    number = models.CharField(max_length=100, unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
