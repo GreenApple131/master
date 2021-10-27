@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import filters, status, viewsets
 from . import models, serializers
+import json
 
 
 class DeviceView(viewsets.ModelViewSet):
@@ -20,7 +21,11 @@ class DeviceView(viewsets.ModelViewSet):
         data_serializer = serializers.DataSerializer(data_qs, many=True).data
 
         # filtering all data entries for device
-        return Response(device_serializer + data_serializer) # merge data entries with device info
+        data = {
+            'device': device_serializer,
+            'data': data_serializer
+        }
+        return Response(data) # merge data entries with device info
     def create(self, request):
         pass
     def update(self, request, pk=None):

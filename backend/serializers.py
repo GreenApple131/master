@@ -22,7 +22,9 @@ class DataSerializer(serializers.ModelSerializer):
             'temperature',
             'ph',
             'turbidity',
-            'tds'
+            'tds',
+            'latitude',
+            'longitude'
         )
 
     def get_device(self, obj):

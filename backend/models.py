@@ -18,11 +18,13 @@ class Data(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
     common_status = models.CharField(max_length=200, blank=False, default='UNDEFINED')
-    # info from device = temp, pH, turbidity, tds
+    # info from device = temp, pH, turbidity, tds, location
     temperature = models.DecimalField(max_digits=5, decimal_places=2)
     ph = models.DecimalField(max_digits=4, decimal_places=2)
     turbidity = models.DecimalField(max_digits=5, decimal_places=2)
-    tds = models.DecimalField(max_digits=7, decimal_places=0)
+    tds = models.IntegerField()
+    latitude = models.DecimalField(max_digits=10, decimal_places=7, null=True)
+    longitude = models.DecimalField(max_digits=10, decimal_places=7, null=True)
 
     def __str__(self):
         return str(self.device)
