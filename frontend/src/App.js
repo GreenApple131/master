@@ -5,6 +5,7 @@ import { Route, Link } from "react-router-dom";
 import "./App.css";
 import Homepage from "./components/Homepage";
 import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 
 // function App() {
 //   return (
@@ -38,9 +39,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App grid">
-        <Homepage className="main" />
-        <Sidebar data={this.state.dataList} className="side" />
+      <div>
+        <Header/>
+        <div className="App grid">
+          <Homepage className="main" />
+          <Sidebar data={this.state.dataList} className="side" />
+        </div>
       </div>
     );
   }

@@ -28,12 +28,12 @@ export default function Sidebar(props) {
     };
   }
 
-  function optionsLine() {
+  function optionsLine(text) {
     return {
       plugins: {
         title: {
           display: true,
-          text: (ctx) => "Last week data",
+          text: (ctx) => text,
         },
       },
       scales: {
@@ -71,7 +71,7 @@ export default function Sidebar(props) {
       },
       {
         label: "Turbidity",
-        data: [1.5, 1.4, 1.6, 2, 1.8, 1.6, 1.6],
+        data: [8, 8.12, 8.1, 8, 8.1, 8.3, 8.2],
         borderColor: "#4F6FAE",
         backgroundColor: "#4F6FAE",
       },
@@ -80,6 +80,12 @@ export default function Sidebar(props) {
         data: [7, 6.9, 6.9, 7.1, 7, 7.1, 7],
         borderColor: "#70CAD1",
         backgroundColor: "#70CAD1",
+      },
+      {
+        label: "TDS",
+        data: [5, 4.8, 5, 5.1, 5.2, 4.9, 5],
+        borderColor: "green",
+        backgroundColor: "green",
       },
     ],
   };
@@ -129,8 +135,8 @@ export default function Sidebar(props) {
       {
         label: "Turbidity",
         data: [
-          1.5, 1.4, 1.6, 2, 1.8, 1.6, 1.5, 1.4, 1.6, 2, 1.8, 1.6, 1.5, 1.4, 1.6,
-          2, 1.8, 1.6, 1.5, 1.4, 1.6, 2, 1.8, 1.6, 1.5, 1.4, 1.6, 2, 1.8, 1.6,
+          8.5, 8.4, 8.6, 8.4, 8.5, 8.6, 8.5, 8.4, 8.6, 8.2, 8.8, 8.6, 8.5, 8.4, 8.6,
+          8.2, 8.8, 8.6, 8.5, 8.4, 8.6, 8.1, 8.8, 8.6, 8.5, 8.4, 8.6, 8.5, 8.8, 8.6,
         ],
         borderColor: "#4F6FAE",
         backgroundColor: "#4F6FAE",
@@ -144,52 +150,148 @@ export default function Sidebar(props) {
         borderColor: "#70CAD1",
         backgroundColor: "#70CAD1",
       },
+      {
+        label: "TDS",
+        data: [
+          1.5, 1.4, 1.6, 1.4, 1.5, 1.6, 1.5, 1.4, 1.6, 1.2, 1.8, 1.6, 1.5, 1.4, 1.6,
+          1.2, 1.8, 1.6, 1.5, 1.4, 1.6, 1.1, 1.8, 1.6, 1.5, 1.4, 1.6, 1.5, 1.8, 1.6,
+        ],
+        borderColor: "green",
+        backgroundColor: "green",
+      },
     ],
   };
+
+  const temperature_data = {
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    datasets: [
+      {
+        label: 'Temperature',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(220,100,100,0.4)',
+        borderColor: '#E25435',
+        borderCapStyle: 'round',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: '#E25435',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: '#E25435',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [12, 11, 8, 10, 15, 14, 13]
+      }
+    ]
+  };
+
+  const turbidity_data = {
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    datasets: [
+      {
+        label: 'Turbidity',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,75,192,0.4)',
+        borderColor: '#4F6FAE',
+        borderCapStyle: 'round',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: '#4F6FAE',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: '#4F6FAE',
+        pointHoverBorderColor: '#4F6FAE',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [8, 8.12, 8.1, 8, 8.1, 8.3, 8.2]
+      }
+    ]
+  };
+
+  const ph_data = {
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    datasets: [
+      {
+        label: 'pH',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: '#70CAD1',
+        borderCapStyle: 'round',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: '#70CAD1',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: '#70CAD1',
+        pointHoverBorderColor: '#70CAD1',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [7, 6.9, 6.9, 7.1, 7, 7.1, 7]
+      }
+    ]
+  };
+
+  const tds_data = {
+    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    datasets: [
+      {
+        label: 'TDS',
+        fill: true,
+        lineTension: 0.1,
+        backgroundColor: 'rgba(75,192,75,0.4)',
+        borderColor: 'green',
+        borderCapStyle: 'round',
+        borderDash: [],
+        borderDashOffset: 0.0,
+        borderJoinStyle: 'miter',
+        pointBorderColor: 'green',
+        pointBackgroundColor: '#fff',
+        pointBorderWidth: 1,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: 'green',
+        pointHoverBorderColor: 'green',
+        pointHoverBorderWidth: 2,
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: [145, 150, 143, 170, 210, 190, 200]
+      }
+    ]
+  };
+  
   return (
     <div className="side overflow-auto">
       <Button variant="success" size="lg" disabled style={{ marginTop: "5px" }}>
-        Good quality
+        Device: 6fa459ea-ee8a-3ca4-894e-db77e160355e
       </Button>
 
-      <Table style={{ marginTop: "15px" }} striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table>
+      
       <div style={{ marginTop: "50px" }}>
         <Bar
           data={data}
-          options={optionsLine()}
+          options={optionsLine('Last data')}
           style={{ marginTop: "10px" }}
         />
         <br />
-        <Line data={detailedData} options={optionsLine()} />
+        <Line data={detailedData} options={optionsLine('Detailed data')} />
         <RenderItems />
+
+        <Line data={temperature_data} options={optionsLine('Temperature')} />
+        <Line data={turbidity_data} options={optionsLine('Turbidity')} />
+        <Line data={ph_data} options={optionsLine('pH')} />
+        <Line data={tds_data} options={optionsLine('TDS')} />
+
       </div>
     </div>
   );

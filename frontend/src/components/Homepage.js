@@ -61,7 +61,6 @@ export default function Homepage() {
   return (
     <MapContainer
       className="main"
-      style={{ height: "100vh", width: "100%" }}
       center={state.center}
       zoom={state.zoom}
       scrollWheelZoom={true}
@@ -72,7 +71,7 @@ export default function Homepage() {
       />
       <Marker position={state.my_home}>
         <Popup className="marker">
-          A pretty CSS3 popup. <br /> Center.
+          Device number: <br /> 6fa459ea-ee8a-3ca4-894e-db77e160355e
         </Popup>
       </Marker>
       <Circle center={state.my_home} pathOptions={{color: statusColor}} radius={100}>

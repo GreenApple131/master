@@ -47,8 +47,11 @@
   gap: 10px;
   grid-template-columns: 2fr 1fr;
 }
+.header {
+  height: 50px;
+}
 .main {
-  height: 100vh;
+  height: calc(100vh - 50px);
   width: 100%;
 }
 .side {
